@@ -1,0 +1,117 @@
+/* body {
+    background-color: var(--black);
+} */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--total-black);
+}
+
+.login__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 16px;
+}
+
+.login__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+
+.login__form__container {
+    padding: 30px;
+    background: var(--form-gradient);
+    border-radius: 50px;
+    width: 100%;
+    position: relative; /* Добавляем, чтобы стрелка позиционировалась относительно формы */
+}
+
+.login__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.login__button_away {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    width: 30px;
+}
+
+.Login__title {
+    text-align: center;
+    width: 100%;
+}
+
+.logo {
+    position: absolute;
+    top: 117px;
+}
+
+.form__label {
+    color: var(--white);
+}
+
+.form__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form__input {
+    background-color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 8px 10px;
+    /* width: 98%; */
+}
+.form__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form__button__login {
+    color: var(--black);
+    padding: 10px 30px;
+    border-radius: 10px;
+    /* text-decoration: none; */
+
+}
+
+.form__button__registration {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.form__button__registration:hover {
+    text-decoration: underline;
+}
+
+
+.login__img {
+    width: 193px;
+    height: 77px;;
+}
+
+
+.form__inputs {
+    margin-bottom: 30px;
+}
+
+.form__header {
+    text-align: left;
+}

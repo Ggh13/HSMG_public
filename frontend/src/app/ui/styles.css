@@ -1,0 +1,135 @@
+:root {
+    --grey: #BCBBBB;
+    --black: #1C1C1E;
+    --total-black: #000000;
+    --white: #FFFFFF;
+    --blue: #9ECCFF80;
+    --dark-blue: #007AFF;
+    --border: #D1D1D2;
+    --input: #F9FAFB;
+    --light-grey: #F3F4F6;
+    --dark-grey: #8C8C8D;
+    --red: #FA5C4A;
+  
+    --green: #00FFAA;
+    --gradient: linear-gradient(90deg, #007AFF, #00FFAA);
+    --to-bottom-gradient: linear-gradient(to bottom, #007AFF, #00FFAA);
+    --form-gradient:  linear-gradient(to right, rgba(169, 210, 255, 0.6), rgba(169, 210, 255, 0.3));;
+    --logo: "/HSMG.svg"
+  }
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  h1, h2, h3, h4, p, ul, li{
+    margin: 0;
+    padding: 0
+  }
+  button, a {
+    padding: 0;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  ul {
+    list-style: none; /* Убирает точки у списка */
+  }
+  
+  .gradient-button {
+    /* color: var(--white); */
+    background: var(--gradient);
+    border: none;
+    /* border-radius: 50px; */
+  }
+  
+  .gradient-border-button {
+    background-color: transparent; /* Прозрачный фон */
+    border: 1px solid; /* Граница */
+    border-image: var(--gradient); /* Градиент для границы */
+    border-image-slice: 1; /* Сохранение градиента */
+  }
+  
+  
+  @font-face {
+    font-family: 'Montserrat-regular';
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Montserrat/static/Montserrat-Regular.ttf");
+  }
+  
+  @font-face {
+    font-family: 'Montserrat-bold';
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Montserrat/static/Montserrat-SemiBold.ttf");
+  }
+  
+  @font-face {
+    font-family: 'Montserrat-medium';
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Montserrat/static/Montserrat-Medium.ttf");
+  }
+  .m12bold {
+    font-family: "Montserrat-bold";
+    font-size: 12px;
+  }
+  
+  .m24bold {
+    font-family: "Montserrat-bold";
+    font-size: 24px;
+  }
+  .m16 {
+    font-family: "Montserrat-regular";
+    font-size: 16px;
+  }
+  
+  .m12 {
+    font-family: "Montserrat-regular";
+    font-size: 16px;
+  }
+  
+  .m14 {
+    font-family: "Montserrat-regular";
+    font-size: 14px;
+  }
+  
+  .m16bold {
+    font-family: "Montserrat-bold";
+    font-size: 16px;
+  }
+  
+  .m20bold {
+    font-family: "Montserrat-bold";
+    font-size: 20px;
+  }
+  
+  .m16med {
+    font-family: "Montserrat-medium";
+    font-size: 16px;
+  }
+
+  .m12med {
+    font-family: "Montserrat-medium";
+    font-size: 12px;
+  }
+  
+  .m36 {
+    font-family: "Montserrat-bold";
+    font-size: 36px;
+  }
+  
+  .m20 {
+    font-family: "Montserrat-regular";
+    font-size: 20px;
+  }
+  
+  .m24bold {
+    font-family: "Montserrat-bold";
+    font-size: 24px;
+  }

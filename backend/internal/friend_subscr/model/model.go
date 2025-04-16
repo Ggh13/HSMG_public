@@ -1,0 +1,1 @@
+package fried_subscr_model

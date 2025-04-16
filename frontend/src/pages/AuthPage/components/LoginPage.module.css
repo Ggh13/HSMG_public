@@ -1,0 +1,36 @@
+/* body {
+    background-color: var(--black);
+} */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--total-black);
+}
+
+.login__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 16px;
+}
+
+.login__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+
+.login__form__container {
+    padding: 30px;
+    background: var(--form-gradient);
+    border-radius: 50px;
+    width: 100%;
+    position: relative; /* Добавляем, чтобы стрелка позиционировалась относительно формы */
+}

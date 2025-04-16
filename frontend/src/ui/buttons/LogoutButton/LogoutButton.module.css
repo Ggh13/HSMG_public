@@ -1,0 +1,8 @@
+.header__button_logout {
+    margin-top: 40px;
+    width: 100%;
+    padding: 25px 59px;
+    background: none;
+    border: 1px solid var(--dark-blue);
+    color: var(--gradient)
+  }
