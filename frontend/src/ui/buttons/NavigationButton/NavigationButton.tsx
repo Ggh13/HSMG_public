@@ -8,7 +8,7 @@ interface NavigationButtonProps {
 export const NavigationButton: FC<NavigationButtonProps> = ({link}) => {
   return (
     <Link to={link}>
-      <img src={go} alt="" />
+      <img src={go} alt="Назад" />
     </Link>
   )
 }

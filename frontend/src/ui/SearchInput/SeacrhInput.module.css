@@ -1,0 +1,12 @@
+.input {
+  border: none;
+  box-sizing: border-box;
+  width: fit-content;
+  width: 100%; /* Сделать ширину адаптивной */
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}

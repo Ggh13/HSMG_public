@@ -37,10 +37,10 @@ export default class profile_store {
   async UserData() {
     try {
       const response = await ProfileService.userdata();
-      console.log(response.data);
+      // console.log(response.data);
       this.setUser(response.data);
       this.errorStore.clearError();
-    } catch (e: any) {
+    } catch (e: unknown) {
       this.errorStore.setError(e.response?.data?.message);
     }
   }
@@ -48,9 +48,9 @@ export default class profile_store {
   async UpdateUserData(UpdateData: IUser) {
     try {
       const response = await ProfileService.updateUserData(UpdateData);
-      console.log(response);
+      // console.log(response);
       this.setUser(response.data);
-      console.log(this.user);
+      // console.log(this.user);
       this.errorStore.clearError();
       return response.data;
     } catch (e: any) {
@@ -76,7 +76,7 @@ export default class profile_store {
       // this.setUser(response.data);
       this.errorStore.clearError();
       return response.data;
-    } catch (e: any) {
+    } catch (e: unknown) {
       this.errorStore.setError(e.response?.data?.message);
       throw e;
     }

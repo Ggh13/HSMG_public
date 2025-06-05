@@ -1,0 +1,13 @@
+.edit__button {
+    text-decoration: underline;
+    color: var(--dark-blue);
+    background: none;
+    border: none;
+}
+
+.editHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

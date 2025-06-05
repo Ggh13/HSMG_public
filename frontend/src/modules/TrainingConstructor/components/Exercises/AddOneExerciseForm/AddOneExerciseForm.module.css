@@ -1,0 +1,19 @@
+.add_button{
+    background-color: transparent; /* Прозрачный фон */
+    border: 1px solid; /* Граница */
+    border-radius: 50px ;
+    border-color: var(--dark-blue);
+    padding: 15px 30px;
+    color: var(--black);
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+    align-self: center;
+}
+
+.add-ex__container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+

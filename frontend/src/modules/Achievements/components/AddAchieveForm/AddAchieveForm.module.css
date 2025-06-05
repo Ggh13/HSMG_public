@@ -1,0 +1,32 @@
+.background__image {
+    width: 235px;
+    height: auto;
+    object-fit: cover;
+    padding-left: 100px
+}
+
+.add-achieve__content {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.add-achieve__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-achieve__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

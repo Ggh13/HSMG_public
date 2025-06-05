@@ -1,0 +1,6 @@
+.training-statistics__container {
+    padding: 20px 16px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

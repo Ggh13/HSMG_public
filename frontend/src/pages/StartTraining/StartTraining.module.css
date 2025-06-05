@@ -1,0 +1,82 @@
+.day__container {
+  padding: 16px;
+
+}
+
+.day__main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.day__info {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.day__time , .day__energy {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+
+
+
+.exercise-modal {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.label {
+  font-size: 12px;
+}
+
+.value-blue {
+  color: #007aff;
+  font-weight: bold;
+}
+
+.value-green {
+  color: #00cc99;
+  font-weight: bold;
+}
+
+.info__button {
+  background: none;
+  border: none;
+}
+
+.day__start {
+  background-color: var(--blue);
+  border-radius: 30px;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 10px 20px;
+  width: fit-content; /* ⬅️ добавь это */
+  align-items: center; /* для выравнивания иконки и текста по вертикали */
+}
+
+.day__exercise {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0px;
+  border-bottom: 1px solid var(--border);
+}
+
+.day__exercise:last-child {
+  border-bottom: none;
+}

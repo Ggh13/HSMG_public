@@ -22,7 +22,7 @@ func NewRouter(ctx context.Context, cfg *config.Config) (Router, error) {
 	r.Use(func(c *gin.Context) {
 		c.Header("Access-Control-Allow-Origin", urlFront)
 		c.Header("Access-Control-Allow-Credentials", "true")
-		c.Header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE")
+		c.Header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE, PUT")
 		c.Header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
 
 		if c.Request.Method == "OPTIONS" {
@@ -33,7 +33,7 @@ func NewRouter(ctx context.Context, cfg *config.Config) (Router, error) {
 		c.Next()
 	})
 	r.Use(logger.MiddleWare(ctx, logger.GetLoggerFromCtx(ctx)))
-	r.GET("/health", authhandler.UserIdentity, func(ctx *gin.Context) {
+	r.GET("/health", authhandler.UserIdentity(ctx), func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{"message": "Its OK"})
 	})
 	return Router{Config: cfg, RestServe: r}, nil

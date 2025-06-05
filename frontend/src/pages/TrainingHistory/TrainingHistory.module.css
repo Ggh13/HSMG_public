@@ -1,0 +1,19 @@
+.history__container {
+  padding: 20px 16px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.history__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.history__add-button {
+  border-radius: 50px;
+  background-color: var(--blue);
+  padding: 10px 10px 7px 10px;
+}

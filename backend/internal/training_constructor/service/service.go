@@ -2,8 +2,12 @@ package trainingservice
 
 import (
 	training_constructormodel "HSMGv2/internal/training_constructor/model"
+	trainingstatisticrepository "HSMGv2/internal/training_statistic/repository"
+	"HSMGv2/pkg/logger"
 	"context"
 	"fmt"
+
+	"go.uber.org/zap"
 )
 
 type Repository interface {
@@ -14,13 +18,15 @@ type Repository interface {
 	GetPsg(ctx context.Context, id int) (training_constructormodel.Training, error)
 	AddPsg(ctx context.Context, trainng_program training_constructormodel.Training) (int, bool, error)
 	UpdatePsg(ctx context.Context, trainng_program training_constructormodel.Training) (bool, error)
+	GetTrainings(ctx context.Context, userID int, isAuthorised bool) (training_constructormodel.UsersTrainings, error)
 }
 type Service struct {
-	repo Repository
+	repo     Repository
+	statRepo trainingstatisticrepository.Repository
 }
 
-func NewService(ctx context.Context, repo Repository) *Service {
-	return &Service{repo: repo}
+func NewService(ctx context.Context, repo Repository, statRepo trainingstatisticrepository.Repository) *Service {
+	return &Service{repo: repo, statRepo: statRepo}
 }
 
 func (s *Service) GetFull(ctx context.Context, id_training_program int) (training_constructormodel.Training, error) {
@@ -40,7 +46,6 @@ func (s *Service) GetGeneral(ctx context.Context, id_training_program int) (trai
 }
 
 func (s *Service) Add(ctx context.Context, training_program training_constructormodel.Training) (bool, error) {
-
 	id_saved, flag, err := s.repo.AddPsg(ctx, training_program)
 
 	if err != nil {
@@ -52,18 +57,18 @@ func (s *Service) Add(ctx context.Context, training_program training_constructor
 	}
 
 	training_program.ID = id_saved
+	err = s.statRepo.CreateStatistic(ctx, id_saved)
+	if err != nil {
+		logger.GetLoggerFromCtx(ctx).Info(ctx, "Failed create programStatistic", zap.Error(err))
+	}
 
 	flag, err = s.repo.AddMongo(ctx, training_program)
-
 	if err != nil {
 		return flag, fmt.Errorf("trainingservice.Add.%w", err)
 	}
-
 	if !flag {
 		return flag, nil
 	}
-
-	// Возвращать id из постгреса и добавление в постгрес делать первым
 
 	return true, nil
 }
@@ -86,4 +91,13 @@ func (s *Service) Update(ctx context.Context, training_program training_construc
 	}
 
 	return true, nil
+}
+
+func (s *Service) GetUsersTrainings(ctx context.Context, userID int, isAuthorised bool) (training_constructormodel.UsersTrainings, error) {
+	trainings, err := s.repo.GetTrainings(ctx, userID, isAuthorised)
+	if err != nil {
+		return training_constructormodel.UsersTrainings{}, fmt.Errorf("trainingservice.GetUsersTrainings: %w", err)
+	}
+
+	return trainings, nil
 }

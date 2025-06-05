@@ -1,0 +1,10 @@
+.addButton {
+  background-color: transparent; /* Прозрачный фон */
+  border: 1px solid; /* Граница */
+  border-image: var(--gradient); /* Градиент для границы */
+  border-image-slice: 1; /* Сохранение градиента */
+  padding: 15px 30px;
+  color: var(--black);
+  text-decoration: none;
+  display: inline-block;
+}

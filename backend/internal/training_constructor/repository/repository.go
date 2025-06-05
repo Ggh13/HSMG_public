@@ -12,8 +12,41 @@ import (
 )
 
 const (
-	InsertQuery = "INSERT INTO public.training_programs (name, description, type, image, author_id, version) VALUES($1, $2, $3, $4, $5, $6) RETURNING training_id"
-	UpdateQuery = "UPDATE public.training_programs SET name = $1, description = $2, type = $3, image = $4, author_id = $5, version = $6 WHERE training_id = $7"
+	InsertQuery        = "INSERT INTO public.training_programs (name, description, type, image, author_id, version) VALUES($1, $2, $3, $4, $5, $6) RETURNING training_id"
+	UpdateQuery        = "UPDATE public.training_programs SET name = $1, description = $2, type = $3, image = $4, author_id = $5, version = $6 WHERE training_id = $7"
+	usersTainingsQuery = `SELECT 
+							tp.training_id,
+							tp.name,
+							tp.description,
+							tp.image,
+							tp.type,
+							tp.version,
+							tp.price,
+							tp.flag,
+							u.user_id,
+							u.email,
+							u.name,
+							u.surname,
+							u.nickname,
+							u.image,
+							sm.telegram_url,
+							sm.vk_url,
+							sm.youtube_url,
+							st.views,
+							st.favourite,
+							st.in_training,
+							st.rating,
+							st.reviews_count
+						FROM 
+							public.training_programs tp
+						LEFT JOIN 
+							users u ON tp.author_id = u.user_id
+						LEFT JOIN 
+							social_media sm ON u.user_id = sm.user_id
+						LEFT JOIN 
+							statistic_training st ON st.training_id = tp.training_id
+						WHERE 
+							u.user_id = $1`
 )
 
 type Repository struct {
@@ -84,6 +117,52 @@ func (r *Repository) GetPsg(ctx context.Context, id int) (training_constructormo
 
 	return training_constructormodel.Training{}, nil
 
+}
+
+func (r *Repository) GetTrainings(ctx context.Context, userID int, isAuthorised bool) (training_constructormodel.UsersTrainings, error) {
+	query := usersTainingsQuery
+	if !isAuthorised {
+		query += " AND tp.flag = 1"
+	}
+	rows, err := r.pgDB.Query(ctx, query, userID)
+	if err != nil {
+		return training_constructormodel.UsersTrainings{}, fmt.Errorf("userrepository.GetTrainings: %w", err)
+	}
+
+	var trainings training_constructormodel.UsersTrainings
+	for rows.Next() {
+		var g training_constructormodel.UserTraining
+		err := rows.Scan(
+			&g.UserTraining.TrainingID,
+			&g.UserTraining.Name,
+			&g.UserTraining.Description,
+			&g.UserTraining.Image,
+			&g.UserTraining.Type,
+			&g.UserTraining.Version,
+			&g.UserTraining.Price,
+			&g.UserTraining.Flag,
+			&g.UserTraining.Author.ID,
+			&g.UserTraining.Author.Email,
+			&g.UserTraining.Author.Name,
+			&g.UserTraining.Author.Surname,
+			&g.UserTraining.Author.NickName,
+			&g.UserTraining.Author.Avatar,
+			&g.UserTraining.Author.SocialMedia.TelegramURL,
+			&g.UserTraining.Author.SocialMedia.VkURL,
+			&g.UserTraining.Author.SocialMedia.YouTubeURL,
+			&g.UserTraining.Stat.Views,
+			&g.UserTraining.Stat.Favourite,
+			&g.UserTraining.Stat.InTraining,
+			&g.UserTraining.Stat.Rating,
+			&g.UserTraining.Stat.Reviews_count,
+		)
+		if err != nil {
+			return trainings, fmt.Errorf("userrepository.GetTrainings: %w", err)
+		}
+		trainings.UsersTrainings.TrainingPrograms = append(trainings.UsersTrainings.TrainingPrograms, g.UserTraining)
+	}
+
+	return trainings, nil
 }
 
 func (r *Repository) AddMongo(ctx context.Context, trainng_program training_constructormodel.Training) (bool, error) {

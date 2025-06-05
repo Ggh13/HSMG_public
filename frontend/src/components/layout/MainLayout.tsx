@@ -13,7 +13,9 @@ export const MainLayout: FC<MainLayoutProps> = ({ footer=true }) => {
   return (
     <div>
       <MobileHeader />
-      <Outlet />
+      <main style={{ paddingTop: "70px", paddingBottom: "70px"}}>
+        <Outlet />
+      </main>
       {footer && <MobileFooter user_id={profileStore.user.user_id}/>}
     </div>
   )

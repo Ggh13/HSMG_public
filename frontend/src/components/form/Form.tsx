@@ -1,5 +1,5 @@
-import { FC, FormEvent, ReactNode } from "react";
-
+import { FC, FormEvent, ReactNode } from 'react';
+import styles from './Form.module.css';
 
 interface FormProps {
   children: ReactNode;
@@ -7,16 +7,15 @@ interface FormProps {
   className?: string;
 }
 
-export const Form: FC<FormProps> = ({ children, onSubmit}) => {
-
+export const Form: FC<FormProps> = ({ children, onSubmit }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit();
-  }
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="">
+    <form onSubmit={handleSubmit} className={styles.form}>
       {children}
     </form>
-  )
-}
+  );
+};

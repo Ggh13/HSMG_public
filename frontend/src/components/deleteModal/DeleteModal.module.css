@@ -1,0 +1,76 @@
+.modal-delete__button {
+    padding: 8px 20px;
+    border: 1px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    border-radius: 55px;
+    transition: opacity 0.3s ease;
+}
+
+.modal-grey__button {
+    padding: 8px 20px;
+    border: 1px solid var(--dark-grey);
+    background: transparent;
+    color: var(--dark-grey);
+    border-radius: 55px;
+    transition: opacity 0.3s ease;
+}
+
+.modal__background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1001;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal__open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__container {
+    background-color: var(--white);
+    border-radius: 20px;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal__open .modal__container {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-buttons__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.close__img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close__img:hover {
+    transform: scale(1.1);
+}

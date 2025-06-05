@@ -17,6 +17,7 @@ type Service interface {
 	GetGeneral(ctx context.Context, id_training_program int) (training_constructormodel.Training, error)
 	Add(ctx context.Context, training_program training_constructormodel.Training) (bool, error)
 	Update(ctx context.Context, training_program training_constructormodel.Training) (bool, error)
+	GetUsersTrainings(ctx context.Context, userID int, isAuthorised bool) (training_constructormodel.UsersTrainings, error)
 }
 
 type Handler struct {
@@ -115,5 +116,45 @@ func (h *Handler) UpdateTrainingProgram(contx context.Context) gin.HandlerFunc {
 		}
 
 		ctx.JSON(200, "Success  update training program")
+	}
+}
+
+func (h *Handler) GetUsersTrainingsAuth(contx context.Context) gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		userID, exists := ctx.Get("userID")
+		if !exists {
+			ctx.JSON(400, gin.H{"message": "Not authorised"})
+			logger.GetLoggerFromCtx(contx).Info(contx, "Not Authorised User")
+			return
+		}
+
+		trainings, err := h.service.GetUsersTrainings(contx, userID.(int), true)
+		if err != nil {
+			logger.GetLoggerFromCtx(contx).Info(contx, "Failed get Auth users trainings", zap.Error(err))
+			ctx.JSON(500, "failed get users trainings")
+			return
+		}
+
+		ctx.JSON(200, trainings.UsersTrainings.TrainingPrograms)
+	}
+}
+
+func (h *Handler) GetUsersTrainings(contx context.Context) gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		userID, err := strconv.Atoi(ctx.Param("user_id"))
+		if err != nil {
+			logger.GetLoggerFromCtx(contx).Info(contx, "Cant read param", zap.Error(err))
+			ctx.JSON(400, "Bad request")
+			return
+		}
+
+		trainings, err := h.service.GetUsersTrainings(contx, userID, true)
+		if err != nil {
+			logger.GetLoggerFromCtx(contx).Info(contx, "Failed get Auth users trainings", zap.Error(err))
+			ctx.JSON(500, "failed get users trainings")
+			return
+		}
+
+		ctx.JSON(200, trainings.UsersTrainings.TrainingPrograms)
 	}
 }

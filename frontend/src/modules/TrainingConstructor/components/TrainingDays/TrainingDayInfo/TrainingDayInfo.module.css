@@ -1,0 +1,34 @@
+.training-day__main_info {
+    background: linear-gradient(to right,
+            #A9D2FF,
+            rgba(169, 210, 255, 0.3));
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 16px;
+    padding-top: 20px;
+}
+
+.training-day__title {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.training-day__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    color: var(--dark-blue);
+    background: linear-gradient(to right,
+            rgba(169, 210, 255, 0.3),
+            rgba(169, 210, 255, 1));
+    border-radius: 103px;
+    background-color: var(--white);
+    padding: 5px;
+}

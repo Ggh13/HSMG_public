@@ -1,0 +1,11 @@
+.program-promo__header {
+  background-color: var(--blue);
+  padding: 16px 16px 0 16px;
+  display: flex;
+}
+
+.program-promo__main {
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px;   */
+}

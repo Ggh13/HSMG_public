@@ -1,0 +1,18 @@
+.fav-item__container{
+    border-radius: 20px;
+    background-color: var(--light-grey);
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.fav-item__title{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+h2 {
+    text-decoration: none;
+}

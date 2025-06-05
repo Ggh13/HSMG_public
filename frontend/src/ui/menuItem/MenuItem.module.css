@@ -1,0 +1,22 @@
+.menu-item__container {
+    background: linear-gradient(to right,
+            #A9D2FF,
+            rgba(169, 210, 255, 0.3));
+    padding: 20px 30px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.menu-item__img {
+    width: 33px;
+    height: auto;
+    padding: 3px;
+}

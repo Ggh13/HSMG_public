@@ -1,0 +1,232 @@
+.account {
+    padding-top: 70px;
+    padding-bottom: 90px;
+}
+
+.account__container {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.personalInfo__header {
+    display: flex;
+    justify-content: space-between;
+    height: 128px;
+    background-color: var(--grey);
+
+}
+
+.perosnalInfo__tg {
+    margin: 16px;
+}
+
+
+
+.personalInfo__main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--light-grey);
+    padding: 0 16px;
+    border-radius: 0 0 28px 28px;
+}
+
+.personalInfo__other { 
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 20px; */
+
+}
+
+.personalInfo__naming {
+    display: flex; /* Используем flexbox */
+    flex-direction: row; /* Отображаем элементы в строку */
+    flex-wrap: wrap; /* Разрешаем перенос на новую строку, если не помещаются */
+    align-items: center; /* Выравнивание по вертикали */
+    gap: 5px;
+    width: 100%; /* Задайте ширину контейнера */
+  }
+  
+  .personalInfo__naming p {
+    margin: 0; /* Уберите стандартные отступы параграфов */
+    word-break: break-word; /* Перенос слов, если они не помещаются */
+    white-space: normal; /* Разрешить перенос строк */
+  }
+
+  .personalInfo__nickname {
+    color: var(--dark-blue);
+  }
+  
+.personalInfo__anthropometry {
+    display: flex;
+}
+   
+.personalInfo__avatar {
+    position: relative;
+    bottom: 30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.button__go {
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+
+
+
+
+.account__archievements, .account__trainingPrograms, .account__statistics {
+    padding: 0 16px;
+    border-top: 1px solid var(--grey);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.archievements__header,.trainingPrograms__header, .statistics__header {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.archievement {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.archievement:last-child {
+    border-bottom: none;
+}
+
+
+.program {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.program:last-child {
+    margin-bottom: 0; 
+}
+
+.program__info {
+display: flex;
+flex-direction: column;
+}
+
+.program__img {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+margin-right: 20px;
+}
+.account__statistics {
+    margin-bottom: 10px;
+}
+.statistics__anthropometry, .statistics__weights {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}   
+
+.separator {
+    height: 1px;
+    background-color: var(--grey);
+    border: none;
+}
+
+
+.foot {
+    height: 70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Info {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: flex-start;
+}
+
+.AccPage {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.AddAchieve {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ChangeUserData {
+    display: flex;
+}
+
+.image1 {
+    max-width: 50px;
+}
+
+.List {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.image {
+    width: 200px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.line {
+    color: var(--grey);
+}

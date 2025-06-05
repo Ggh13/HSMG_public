@@ -15,7 +15,7 @@ type Claims struct {
 }
 
 func GenerateJWT(userID int) (string, error) {
-	expires := time.Now().Add(12 * time.Hour)
+	expires := time.Now().Add(720 * time.Hour)
 	claims := &Claims{
 		UserID: userID,
 		RegisteredClaims: jwt.RegisteredClaims{

@@ -1,0 +1,12 @@
+.programs-list__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .programs-list__list > *:not(:last-child) {
+    padding-bottom: 10px;
+  }
+  

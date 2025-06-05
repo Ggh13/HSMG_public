@@ -87,7 +87,6 @@
   .menu__content {
     padding: 0 16px;
     top: 10%;
-    /* width: calc(100%); */
     position: absolute;
     display: flex;
     flex-direction: column;

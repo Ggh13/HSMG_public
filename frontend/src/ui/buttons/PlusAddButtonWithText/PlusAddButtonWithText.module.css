@@ -1,0 +1,15 @@
+.add__button{
+    border: 1px solid var(--dark-blue);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    background-color: transparent;
+    text-decoration: none;
+    gap: 5px;
+}
+
+.add-button__container{
+    text-decoration: none;
+}

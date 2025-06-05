@@ -1,0 +1,16 @@
+.day__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border: 1px solid var(--grey);
+  border-radius: 20px;
+  gap: 8px;
+}
+
+.day__number {
+  background-color: var(--blue);
+  color: var(--dark-blue);
+  border-radius: 50%;
+}

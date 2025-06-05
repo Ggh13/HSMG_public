@@ -1,0 +1,11 @@
+.ex-list__container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .ex-list__header {
+    margin-bottom: 5px;
+  }
+  

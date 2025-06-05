@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../../../ui/logo/Logo';
 import { LogoutButton } from '@/ui/buttons/LogoutButton/LogoutButton';
 import tg from '../../../ui/imgs/tg.svg';
-import styles from "./MobileHeader.module.css";
+import styles from './MobileHeader.module.css';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -12,20 +12,20 @@ interface MobileMenuProps {
   isAuth: boolean;
 }
 
-export const MobileMenu: React.FC<MobileMenuProps> = ({ 
-  isOpen, 
-  onClose, 
+export const MobileMenu: React.FC<MobileMenuProps> = ({
+  isOpen,
+  onClose,
   onLogoutClick,
-  isAuth
+  isAuth,
 }) => (
-  <div className={`${styles.menu} ${isOpen ? styles.menuOpen : ""}`}>
+  <div className={`${styles.menu} ${isOpen ? styles.menuOpen : ''}`}>
     <div className={styles.menu__header}>
       <Logo />
       <button className={styles.menu__close_button} onClick={onClose}>
         ✕
       </button>
     </div>
-    
+
     <div className={styles.menu__content}>
       {isAuth ? (
         <>
@@ -53,10 +53,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   </div>
 );
 
-
 const TelegramLink = () => (
   <a href="https://t.me/yourtelegram" className={styles.menu__link}>
     <img src={tg} alt="Telegram" />
   </a>
 );
-

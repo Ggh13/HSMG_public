@@ -1,0 +1,135 @@
+.program {
+  padding: 70px 16px 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/*  */
+
+.program__info {
+  background: linear-gradient(
+    to right,
+    #A9D2FF,
+    rgba(169, 210, 255, 0.3)
+  );
+  margin: 0;
+}
+
+.program__info_container {
+  padding: 15px 20px;
+}
+
+.program__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 5px;
+}
+
+.program__main_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.program__img {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+
+.program__edit_button {
+  background: none;
+  border: none;
+
+}
+
+.descriptionContainer {
+  margin-top: 10px;
+}
+
+.readMoreButton {
+  background: none;
+  color: var(--dark-blue);
+  border: none;
+  /* margin-top: 10px; */
+  border-radius: 5px;
+}
+
+.program__description {
+  word-break: break-all;
+}
+
+.no_days {
+  margin-bottom: 20px;
+}
+
+.days__title {
+  margin-bottom: 20px;
+}
+
+.day {
+  display: flex;
+  border-top: 1px solid var(--total-black);
+  border-radius: 20px;
+}
+
+.day__container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.day__button {
+  background: none;
+  border: none;
+  padding: 10px;
+}
+
+.day__info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.day__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--dark-blue);
+  border-radius: 50%;
+  color: var(--white);
+}
+
+
+.addDay__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.addDay__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.addDay__input {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--grey);
+}
+
+.addDay__button {
+  background: none;
+  border: 1px solid var(--dark-blue);
+  color: var(--total-black);
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin: auto;
+}

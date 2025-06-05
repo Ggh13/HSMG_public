@@ -1,0 +1,31 @@
+.select__container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.select__element {
+  padding: 10px 8px;
+  font-size: 16px;
+  color: gray;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+/* .input__element:focus {
+  outline: none;
+} */
+
+/* .input-element:hover {
+  outline: none;
+} */
+
+.select__label {
+  font-family: "Montserrat";
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.select__placeholder{
+  color: gray;
+}

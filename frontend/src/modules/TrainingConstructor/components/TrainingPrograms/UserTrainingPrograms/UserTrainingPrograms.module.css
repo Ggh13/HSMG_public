@@ -1,0 +1,104 @@
+.programs, .loader__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  
+  .programs__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    gap: 40px;
+  }
+  
+  
+  .programs__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  }
+  
+ .add-program__button {
+  color: var(--white);
+  background-color: var(--dark-blue);
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  /* background: none; */
+  border: none;
+}
+  
+  .programs__button_add {
+    padding: 15px 30px;
+    text-decoration: none;
+    color: var(--total-black);
+  }
+  
+  .GoBackButton {
+    position: absolute;
+    top: 0;
+    left: -20%;
+  }
+  
+  
+  .program {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .program__container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+  
+  }
+  
+  .program__container:last-child {
+    margin-bottom: 0; 
+  }
+  
+  .program__info {
+  display: flex;
+  flex-direction: column;
+  }
+  
+  .program__img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .program__actions {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+  }
+  
+  .button__go {
+    margin-left: auto;
+  }
+  
+  .programs__header__without_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .go-back__button{
+    padding-top: 15px;
+    margin-right: 10px;
+  }
+
+  .button__container{
+    width: 100%;
+  }

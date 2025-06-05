@@ -1,13 +1,19 @@
-FROM node:22
+FROM node:20-alpine
 
-RUN mkdir /app
 WORKDIR /app
 
-# Установка зависимостей
-COPY package*.json .
-RUN npm install --omit=dev
+# Отключаем Husky при установке
+ENV HUSKY=0
 
+# Копируем только файлы зависимостей
+COPY package.json package-lock.json ./
+
+# Устанавливаем зависимости (игнорируя prepare-скрипт)
+RUN npm install --ignore-scripts
+
+# Копируем остальные файлы
 COPY . .
+
 EXPOSE 3000
 
-CMD ["npm", "run", "host"]
+CMD ["npm", "run", "dev"]

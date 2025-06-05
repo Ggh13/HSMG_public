@@ -1,23 +1,29 @@
-FROM golang:1.23.6-alpine3.21 as builder
+FROM golang:1.23.6-alpine AS builder
 
-# Set destination for COPY
 WORKDIR /app
 
-# Download Go modules
-COPY . .
+# Копируем сначала зависимости для кэширования
+COPY go.mod go.sum ./
 RUN go mod download
 
-# Build
-RUN CGO_ENABLED=0 GOOS=linux go build -o /HSMGweb ./cmd/main.go
+# Копируем весь проект
+COPY . .
 
-FROM alpine:3.21
+# Билдим приложение
+RUN CGO_ENABLED=0 GOOS=linux go build -o /main ./cmd/main.go
+
+# Финальный образ
+FROM alpine:latest
 
 WORKDIR /app
 
-COPY --from=builder /HSMGweb .
+# Копируем бинарник и конфиг
+COPY --from=builder /main .
+COPY ./config/config.yaml ./config/
 
-EXPOSE 8080
+# Переменная для пути к конфигу
+ENV CONFIG_PATH=/app/config/config.yaml
+
 EXPOSE 8081
 
-# Run
-CMD ["./HSMGweb"]
+CMD ["./main"]

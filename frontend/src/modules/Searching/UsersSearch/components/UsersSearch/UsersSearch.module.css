@@ -1,0 +1,9 @@
+.users-search__container {
+  /* margin: 30px 16px; */
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #F3F4F6;
+}

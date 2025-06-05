@@ -1,0 +1,19 @@
+.readmore_button {
+    background: none;
+    border: none;
+    color: var(--dark-blue);
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+  }
+
+  .rotate {
+    width: 8px;
+    transform: rotate(90deg);
+  }
+  
+  .readmore__container{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }

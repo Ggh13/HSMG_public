@@ -1,6 +1,7 @@
 package trainingmodel
 
 import (
+	searching_training_model "HSMGv2/internal/training_searching/model"
 	usermodel "HSMGv2/internal/user/model"
 )
 
@@ -21,11 +22,20 @@ type Training struct {
 	//InProgress         json.RawMessage `json:"in_progress" bson:"in_progress"`
 }
 
+type UserTraining struct {
+	UserTraining searching_training_model.GeneralTrainingInfo
+}
+
+type UsersTrainings struct {
+	UsersTrainings searching_training_model.TrainingPrograms
+}
+
 type TrainingDay struct {
 	Name        string     `json:"name" bson:"name"`
 	Description string     `json:"description" bson:"description"`
 	Image       string     `json:"image" bson:"image"`
 	WeekDay     string     `json:"week_day" bson:"week_day"`
+	Flag        *bool      `json:"flag,omitempty" bson:"flag,omitempty"`
 	Exercises   []Exercise `json:"exercises" bson:"exercises"`
 }
 
@@ -35,6 +45,7 @@ type Exercise struct {
 	Description     string     `json:"description" bson:"description"`
 	Image           string     `json:"image" bson:"image"`
 	ExampleExercise string     `json:"example_exercise" bson:"example_exercise"`
+	Flag            *bool      `json:"flag,omitempty" bson:"flag,omitempty"`
 	Approaches      []Approach `json:"approaches" bson:"approaches"`
 }
 

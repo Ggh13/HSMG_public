@@ -1,0 +1,31 @@
+.select__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.select__button {
+    text-decoration: none;
+    border: none;
+    border-bottom: 1px solid var(--dark-grey);
+    color: var(--dark-grey);
+    background-color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.button__active{
+    color: var(--dark-blue);
+    border-color: var(--dark-blue);
+}
+
+.select-add-ex__container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}

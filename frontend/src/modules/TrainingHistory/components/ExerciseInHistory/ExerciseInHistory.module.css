@@ -1,0 +1,30 @@
+.exercise__constainer {
+  background-color: var(--light-grey);
+  border-radius: 30px;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.exercise__name {
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.exercise__statistic {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.exercise__weight, .exercise__count {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.exercise__weight-img, .exercise__count-img {
+  width: 20px;
+  height: 20px;
+}
+
+.exercise__date {
+  color: var(--dark-blue);
+}

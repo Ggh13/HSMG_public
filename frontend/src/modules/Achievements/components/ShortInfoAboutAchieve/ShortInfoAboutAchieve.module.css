@@ -1,0 +1,10 @@
+.achieve-el__container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+.achieve-el__container>*:not(:last-child) {
+    border-bottom: 1px solid var(--grey);
+}

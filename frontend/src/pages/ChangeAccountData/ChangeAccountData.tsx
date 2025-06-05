@@ -4,9 +4,8 @@ import { FC } from "react";
 import styles from "./ChangeAccountData.module.css";
 export const ChangeAccountData: FC = observer(() => {
   return (
-    <div className="">
-      <div className={styles.info}></div>
+    <section className={styles.changeData__container}>
       <ProfileEdit />
-    </div>
+    </section>
   )
 });

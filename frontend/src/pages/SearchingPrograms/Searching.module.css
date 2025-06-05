@@ -1,0 +1,39 @@
+.searching__container {
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--white);
+  margin-bottom: 10px;
+  padding: 16px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--white);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* .tab:hover {
+  background-color: var(--white);
+} */
+
+.active {
+  color: var(--dark-blue);
+  border-bottom: 2px solid var(--dark-blue);
+}
+
+.content {
+  padding: 10px;
+}

@@ -1,0 +1,23 @@
+.camera-auth__button {
+    background-color: transparent;
+    border: 1px solid;
+    border-image: var(--gradient);
+    border-image-slice: 1;
+    padding: 15px 30px;
+    color: var(--black);
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.camera-auth__button:active {
+    opacity: 0.8; 
+}
+
+.camera-auth__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}

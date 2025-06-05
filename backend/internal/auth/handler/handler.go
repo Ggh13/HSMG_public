@@ -4,7 +4,6 @@ import (
 	authmodel "HSMGv2/internal/auth/model"
 	"HSMGv2/pkg/logger"
 	"context"
-	"log"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -28,7 +27,7 @@ func (h *Handler) Register(contx context.Context) gin.HandlerFunc {
 		var user authmodel.UserRegister
 
 		if err := ctx.ShouldBindJSON(&user); err != nil {
-			log.Printf("Failed bind json(register): %s", err)
+			logger.GetLoggerFromCtx(contx).Info(contx, "Failed bing JSON", zap.Error(err))
 			ctx.JSON(400, "Bad request")
 			return
 		}
@@ -41,7 +40,7 @@ func (h *Handler) Register(contx context.Context) gin.HandlerFunc {
 		}
 		if !flag {
 			logger.GetLoggerFromCtx(contx).Info(contx, "Failed register(alredy exists maybe)")
-			ctx.JSON(400, "Failed register")
+			ctx.JSON(400, "Failed register(user with this email is alreade exists)")
 			return
 		}
 
@@ -66,7 +65,7 @@ func (h *Handler) Login(contx context.Context) gin.HandlerFunc {
 		}
 		if !flag {
 			logger.GetLoggerFromCtx(contx).Info(contx, "wrong pass or jwt gen", zap.Error(err))
-			ctx.JSON(400, "Failed authorise(wrong password)")
+			ctx.JSON(400, "Failed authorise(wrong password or email)")
 			return
 		}
 

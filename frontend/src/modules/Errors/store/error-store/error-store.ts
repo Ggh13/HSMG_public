@@ -3,7 +3,7 @@ import { IErrorStore } from "./types";
 
 
 export default class error_store implements IErrorStore {
-    error = ""
+    error: string | null = ""
 
     constructor() {
         makeAutoObservable(this);

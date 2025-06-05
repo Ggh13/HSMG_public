@@ -1,0 +1,29 @@
+.current-program {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  border-radius: 20px;
+  background-color: var(--light-grey);
+  cursor: pointer;
+}
+
+.current-program__info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.current-program__last-day {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.current-program__day-description {
+  color: var(--dark-blue);
+}
+
+.current-program__divider {
+  color: var(--border);
+  margin: 20px 0;
+}

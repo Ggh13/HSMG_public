@@ -49,7 +49,7 @@ func (r *Repository) Get(ctx context.Context, email string) (string, error) {
 	var password string
 	err = r.pgDB.QueryRow(ctx, SelectPasswordQuery, email).Scan(&password)
 	if err != nil {
-		return "", fmt.Errorf("authrepository.Get(failed scan pas user)")
+		return "", fmt.Errorf("authrepository.Get(failed scan pas user): %w", err)
 	}
 
 	return password, nil
@@ -75,6 +75,7 @@ func (r *Repository) Put(ctx context.Context, user authmodel.UserRegister) (bool
 	if err != nil {
 		return false, fmt.Errorf("authrepository.Put(failed insert user): %w", err)
 	}
+
 	return false, nil
 }
 

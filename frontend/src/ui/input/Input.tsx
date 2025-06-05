@@ -2,7 +2,7 @@ import { ChangeEvent, FC } from "react";
 import styles from "./Input.module.css";
 
 interface InputProps {
-  value: string;
+  value: string | number | undefined;
   placeholder?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   type?: string;
@@ -29,18 +29,26 @@ export const Input: FC<InputProps> = ({
 }) => {
   const inputId = id || name || `input-${Math.random().toString(36).slice(2, 8)}`;
 
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    if (type === 'number') {
+      e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '');
+    }
+  };
+
   return (
     <div className={styles.input__container}>
       {label && (
-        <label htmlFor={inputId} className={`${styles.input__label} m12med `}>
+        <label htmlFor={inputId} className={`${styles.input__label} m12med`}>
           {label}
         </label>
       )}
       <input
+        id={inputId}
         name={name}
         type={type}
         value={value}
         onChange={onChange}
+        onInput={handleInput}
         placeholder={placeholder}
         disabled={disabled}
         required={required}

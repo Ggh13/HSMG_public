@@ -6,7 +6,8 @@ export interface RegisterFormData {
     password: string;
     fileName: string;
     confirmPassword: string;
-    base64String: string;
+    // base64String: string;
+    avatarUrl: string;
 }
 
 export interface RegisterFormActions {

@@ -1,0 +1,23 @@
+.achieve-item__container {
+    border-radius: 30px;
+    background-color: var(--light-grey);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.achieve-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.achieve-item__delete {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}

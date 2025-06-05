@@ -50,6 +50,7 @@ func (h *Handler) GetData(contx context.Context) gin.HandlerFunc {
 		user_id, err := strconv.Atoi(ctx.Param("id_user"))
 		if err != nil {
 			logger.GetLoggerFromCtx(contx).Info(contx, "Failed get user_id: %w", zap.Error(err))
+			ctx.JSON(400, "Failed get user_id")
 			return
 		}
 

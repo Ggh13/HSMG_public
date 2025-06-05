@@ -1,0 +1,36 @@
+.anth-inputs__container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.anth__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.anth-form__header{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.anth-form__error{
+    color: var(--red);
+}
+
+.form__delete_button {
+    background: none;
+    border: none;
+    color: var(--red);
+    text-decoration: underline;
+}
+
+.form__input{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

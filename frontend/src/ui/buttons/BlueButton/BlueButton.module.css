@@ -1,0 +1,8 @@
+.saveButton {
+  color: var(--white);
+  background-color: var(--dark-blue);
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 10px;
+  border: none;
+}

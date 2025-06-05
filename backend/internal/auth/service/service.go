@@ -26,11 +26,11 @@ func (s *Service) Authorisation(ctx context.Context, user authmodel.UserAuth) (b
 		return false, "", fmt.Errorf("authservice.authorisation: %w", err)
 	}
 	if password == "" {
-		return false, "", fmt.Errorf("alredy exists: %w", err)
+		return false, "", nil
 	}
 
 	if err := authmodel.CheckPassword(&password, &user.Password); err != nil {
-		return false, "", fmt.Errorf("authservice.authorisation: %w", err)
+		return false, "", nil
 	}
 
 	id, err := s.repo.GetID(ctx, user.Email)

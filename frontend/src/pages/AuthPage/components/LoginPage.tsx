@@ -1,3 +1,4 @@
+import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { LoginForm } from '../../../modules/AuthorizationForm';
 import styles from './LoginPage.module.css';

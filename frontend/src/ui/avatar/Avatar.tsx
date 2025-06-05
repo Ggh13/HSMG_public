@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { img } from "../../../public/img.tsx";
+import { img } from "@/ui/basic_imgs/img";
 interface AvatarProps {
   src: string;
   size: number;

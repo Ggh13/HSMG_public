@@ -6,6 +6,7 @@ import (
 	"HSMGv2/pkg/redis"
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/ilyakaznacheev/cleanenv"
 )
@@ -23,7 +24,12 @@ type Config struct {
 func NewConfig(ctx context.Context) (*Config, error) {
 	var cfg Config
 
-	err := cleanenv.ReadConfig("./config/config.yaml", &cfg)
+	configPath := os.Getenv("CONFIG_PATH")
+	if configPath == "" {
+		configPath = "./config/config.yaml"
+	}
+
+	err := cleanenv.ReadConfig(configPath, &cfg)
 	if err != nil {
 		return nil, fmt.Errorf("failed to load config/NewConfig: %w", err)
 	}

@@ -1,0 +1,10 @@
+.programs-list__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.programs-list__list > *:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0; /* тонкая серая линия */
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}

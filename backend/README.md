@@ -20,12 +20,22 @@
 
 ## API
 - [Registration/Authorisation](#registrationauthorisation)
-- [Training](#training)
-- [Training_Process](#trainig_process)
-- [User](#user)
-- [Achievements](#achievements)
-- [Comunity](#comunity)
-- [Searching trainings](#searching-trainings)
+- [Library](#library)
+- Triaining
+  - [Training](#training)
+  - [Training_Process](#trainig_process)
+  - [Training History](#training_history)
+- User
+  - [User](#user)
+  - [Achievements](#achievements)
+  - [Comunity](#comunity)
+  - [Anthropometry](#anthropometry)
+  - [Statistics](#statistics)
+- Searching
+  - [Searching trainings](#searching-trainings)
+  - [Searching users](#searching-users)
+  - [Favourite Training](#favourite-training)
+
 - [Rating system]()
 
 ## Registration/Authorisation
@@ -41,6 +51,21 @@ JSON [User_Register](#user_register)
 JSON [User_auth](#user_auth)
 - Response:
 [HTTP status](#http-status-200ok-400-500); Also return json{"message":"", "token": (accessToken)}
+
+## Library
+#### Get Training exercises info from library GET ```/api/libraries/training_exercises/get/:training_exercise_id```
+-   Request:
+none
+-   Response:
+[Exercise_info_from_libraries](#Exercise_info_from_libraries)
+[HTTP status](#http-status-200ok-400-500)
+
+#### Get All Training exercises info from library GET ```/api/libraries/training_exercises/get_all```
+-   Request:
+none
+-   Response:
+[Exercises_info_from_libraries](#Exercises_info_from_libraries)
+[HTTP status](#http-status-200ok-400-500)
 
 
 ## Training
@@ -66,20 +91,63 @@ none
 [Training](#training-1)
 [HTTP status](#http-status-200ok-400-500)
 
+#### Get Training Statistic GET ```/api/training_statistic/:training_id```
+-   Request:
+none
+-   Response:
+[training_stat](#statistics_training)
+
+#### Get General Training info GET ```/api/searching_training/get/:training_id```
+-   Request:
+none
+-   Response:
+[General training info](#general-training-information)
+
 
 ## Trainig_process
-#### Done Exercise POST ```/api/update_training_version/:training_id```
+#### Done exercise POST ```/api/training_process/done_exercise```
+-   Request: Authorisation header with accessToken
+[History_exercise](#history_exercise)
+-   Response: 
+[HTTP status](#http-status-200ok-400-500)
+
+#### Add training programs to user training programs POST ```/api/training_process/add/:training_program_id```
+-   Request:
+JSON with Authorization header, where accessToken locate
+-   Response: 
+[HTTP status](#http-status-200ok-400-500)
+
+#### Get training users chosen training programs GET ```/api/training_process/get```
+-   Request:
+JSON with Authorization header, where accessToken locate
+-   Response:
+[Training Programs](#general-information-training-programs)
+[HTTP status](#http-status-200ok-400-500)
+
+#### Get training program from user training programs GET ```/api/training_process/get/:training_program_id```
+-   Request:
+JSON with Authorization header, where accessToken locate
+-   Response:
+[Training Program](#training-1)
+[HTTP status](#http-status-200ok-400-500)
+
+#### Update training program from user training programs POST ```/api/training_process/update/:training_program_id```
 -   Request:
 [Training](#training-1)
 JSON with Authorization header, where accessToken locate
 -   Response: 
 [HTTP status](#http-status-200ok-400-500)
 
-#### Done exercise POST ```/api/user_done_exercise```
--   Request: Authorisation header with accessToken
-[History_exercise](#history_exercise)
+## Training History
+#### Training history GET ```/api/history/get_exercise_history/:user_id```
+-   Request:
+none
+JSON with Authorization header, where accessToken locate
 -   Response: 
-[HTTP status](#http-status-200ok-400-500)
+[Training_history](#training_history)
+
+
+
 
 ## User
 #### Get user data GET ```/api/user_data/:id_user```
@@ -108,52 +176,123 @@ JSON with Authorization header, where accessToken locate
 -   Response:
 [HTTP status](#http-status-200ok-400-500)
 
+#### Get user's training programs GET ```/api/training_constructor/user_trainings/:user_id```
+-   Request:
+none
+-   Response:
+[Training programs](#general-information-training-programs)
+[HTTP status](#http-status-200ok-400-500)
+
+#### Get user's Auth training programs GET ```/api/training_constructor/user_trainings```
+-   Request:
+JSON with Authorization header, where accessToken locate
+-   Response:
+[Training programs](#general-information-training-programs)
+[HTTP status](#http-status-200ok-400-500)
+
 ## Achievements
-#### To get possible achievements GET ```/api/user_bests_exercises```
+#### To get possible achievements GET ```/api/achievements/best_aproaches```
 -   Request:
 Authorisation header with accessToken
 -   Response:
 [Best_Exercises](#best_exercises)
 
-#### Create achievement POST ```/api/create_achievement```
+#### Create achievement POST ```/api/achievement/create```
 -   Request:
+Authorisation header with accessToken
 JSON [Achievement](#achievement)
 -   Response:
 [HTTP status](#http-status-200ok-400-500)
 
-#### To get user's achievements GET ```/api/get_achievements/:id_user```
+#### To get authorised user's achievements GET ```/api/achievement/get```
 -   Request:
 none
 -   Response: JSON [Achievements](#achievements)
 [HTTP status](#http-status-200ok-400-500)
 
-#### To delete achievement DELETE ```/api/delete_achievement/:id_achievement```
+#### To get user's achievements GET ```/api/achievement/get/:id_user```
+-   Request:
+none
+-   Response: JSON [Achievements](#achievements)
+[HTTP status](#http-status-200ok-400-500)
+
+#### To delete achievement DELETE ```/api/achievement/delete/:id_achievement```
 -   Request:
 Authorisation header with accessToken
 -   Response:
 [HTTP status](#http-status-200ok-400-500)
 
-## Comunity
+
+## Anthropometry
+
+#### Set Current Anthropometry PUT ```/api/anthropometry/set```
+-   Request:
+[Anthropometry](#anthropometry-1)
+JSON with Authorization header, where accessToken locate
+-   Response:
+[HTTP status](#http-status-200ok-400-500)
+
+#### Delete Current Anthropometry DELETE ```/api/anthropometry/delete```
+U can delete current anthropometry only 24Hours later last anthropometry set? otherwise u get 203.
+-   Request:
+JSON with Authorization header, where accessToken locate
+-   Response:
+[HTTP status](#http-status-200ok-400-500)
+
+#### Get Current Anthropometry GET ```/api/anthropometry/:user_id```
+-   Request:
+none
+-   Response:
+[Anthropometry](#anthropometry-1)
+[HTTP status](#http-status-200ok-400-500)
+
+#### Get Acnthropometry Statistic POST ```/api/anthropometry/statistic/:user_id```
+-   Request:
+none
+-   Response:
+[Anthropometry_stat](#anthropomery_stat)
+
+
+## Statistics
+
+#### Set Current Anthropometry POST ```/api/statistic/get/exercises```
+-   Request:
+[Statistic_json_request](#statistic_json_request)
+-   Response:
+[Statistic_json_response](#statistic_json_response)
+
+
+
+## Searching users
 #### Find people POST ```/api/find_people```
 - Request:
-[User_filter](#user_filter)
+[User_filter](#user-filter)
 - Response:
-[Users](#users)
+[Users](#users_with_friend_status)
 [HTTP status](#http-status-200ok-400-500)
 
-#### Add Friends POST ```/api/add_friend/:id_user```
+#### Find people POST ```/api/auth/find_people```
+- Request:
+JSON with Authorization header, where accessToken locate
+[User_filter](#user-filter)
+- Response:
+[Users](#users_with_friend_status)
+[HTTP status](#http-status-200ok-400-500)
+
+## Comunity
+#### Add Friends PUT ```/api/comunity/add/:user_id```
 - Request:
 JSON with Authorization header, where accessToken locate
 - Response:
 [HTTP status](#http-status-200ok-400-500)
 
-#### Delete from Friends DELETE ```/api/delete_friend/:id_user```
+#### Delete from Friends DELETE ```/api/comunity/delete/:user_id```
 - Request:
 JSON with Authorization header, where accessToken locate
 - Response:
 [HTTP status](#http-status-200ok-400-500)
 
-#### Get Friends GET ```/api/get_friends```
+#### Get Friends GET ```/api/comunity/get```
 - Request:
 JSON with Authorization header, where accessToken locate
 - Response:
@@ -161,28 +300,36 @@ JSON with Authorization header, where accessToken locate
 
 
 ## Searching trainings
-#### Find training POST ```/api/find_training```
+#### Find training POST ```/api/searching_training/find```
 - Request:
-[Training Filter](#training-filter)
+[Training Filter](#training-filter) - Some fields can be missing 
 - Response:
-[training programs]()
+[Training programs](#general-information-training-programs)
 [HTTP status](#http-status-200ok-400-500);
 
-#### Add training program to favourite POST ```/api/add_to_favourite/:id_program```
+#### Get General Info training GET ```/api/searching_training/get/:training_id```
+- Request:
+none
+- Response:
+[Training program](#general-training-information)
+[HTTP status](#http-status-200ok-400-500);
+
+## Favourite training
+#### Add training program to favourite PUT ```/api/training_favourite/add/:id_program```
 - Request:
 JSON with Authorization header, where accessToken locate
 - Response:[HTTP status](#http-status-200ok-400-500);
 
-#### Delete training program from favourite DELETE ```/api/remove_favourite/:id_program```
+#### Delete training program from favourite DELETE ```/api/training_favourite/delete/:id_program```
 - Request:
 JSON with Authorization header, where accessToken locate
 - Response:[HTTP status](#http-status-200ok-400-500);
 
-#### Get favourite training programs GET  ```/api/favourite_training_programs```
+#### Get favourite training programs GET  ```/api/training_favourite/get```
 - Request:
 JSON with Authorization header, where accessToken locate
 - Response:
-[Training programs]()
+[Training programs](#general-information-training-programs)
 
 ## Statistic
 #### Anthropometry statistic POST ```/api/get_anthropometry_statistic/:id_user```
@@ -199,13 +346,27 @@ JSON with Authorization header, where accessToken locate
 
 
 ## Entities
--   [User](#user-1)
+-   [**User**](#user-1)
     -   [Social media](#social_media)
     -   [User review](#social_media)
     -   [User register](#user_register)
     -   [User authorisation](#user_auth)
     -   [Users](#users)
--   [Training](#training-1)
+    -   [Users with friend status](#user_with_friends_status)
+
+-   [**Achievements**](#achievements-1)
+    -   [Achievement](#achievement)
+
+-   [**Training_History**](#history_exercise)
+
+-   [**Reviews and rating**]()
+    -   [User review](#social_media)
+    -   [User Stats](#statistics_user)
+
+-   [**Anthrophometry**](#anthropometry-1)
+    - [Anthropometry_stat](#anthropomery_stat)
+
+-   [**Training**](#training-1)
     -   [Generl training information](#general-training-information)
     -   -   [Training_programs](#general-information-training-programs)
     -   [Statistic training](#statistics_training)
@@ -215,15 +376,8 @@ JSON with Authorization header, where accessToken locate
         -   [Exercises](#exercise)
             -   [Approach](#approach)
                 -   [In progrss Exercise](#in_progress_ex)
--   [Achievements](#achievements-1)
-    -   [Achievement](#achievement)
--   [Training_History](#history_exercise)
--   [Reviews and rating]()
-    -   [User review](#social_media)
-    -   [User Stats](#statistics_user)
--   [Anthrophometry](#anthropometry)
-    - [Anthropometry_stat](#anthropomery_stat)
--   Filters
+
+-   **Filters**
     - [User Filter](#user-filter)
     - [Training filter](#training-filter)
     - [Anthropometry filter](#anthropometry-filter)
@@ -256,10 +410,25 @@ JSON with Authorization header, where accessToken locate
       -    telegram_url: Link to Telegram.
       -    vk_url: Link to VK.
 
-## users
+## user_with_friends_status
 ```JSON
 {
-  "users": [
+  "user": {},
+  "is_friend": true,
+}
+```
+
+## Fields
+- user: default [user](#user-1) json
+- is_frined: flag that indicates, is user a friend
+
+## Fields
+- users: an array of user
+
+## users_with_friend_status
+```JSON
+{
+  "users_with_friends_status": [
     {},
     {},
   ]
@@ -267,7 +436,7 @@ JSON with Authorization header, where accessToken locate
 ```
 
 ## Fields
-- users: an array of user
+- users: an array of [user_with_friends_status](#user_with_friends_status)
 
 ## social_media
 ```JSON
@@ -333,6 +502,7 @@ JSON with Authorization header, where accessToken locate
     "favourite": 60,
     "in_training": 15,
     "rating": 4.94,
+    "reviews_count": 1,
     "reviews": [
       {
         "user_review": {
@@ -420,6 +590,9 @@ JSON with Authorization header, where accessToken locate
   "description": "Основное упражнение для развития грудных мышц.",
   "image": "https://example.com/images/bench_press.jpg",
   "example_exercise": "https://example.com/videos/bench_press.mp4",
+
+  "flag": true,
+
   "approaches": [
   {
       "recommended_weight": 30,
@@ -451,6 +624,9 @@ JSON with Authorization header, where accessToken locate
     "description": "Базовая тренировка для развития мышц груди и трицепса.",
     "image": "https://example.com/images/day1.jpg",
     "week_day": "wednesday",
+
+    "flag": true,
+
     "exercises": [
     {
         "name": "Жим штанги лёжа",
@@ -458,6 +634,9 @@ JSON with Authorization header, where accessToken locate
         "description": "Основное упражнение для развития грудных мышц.",
         "image": "https://example.com/images/bench_press.jpg",
         "example_exercise": "https://example.com/videos/bench_press.mp4",
+
+        "flag": true,
+
         "approaches": [
         {
             "recommended_weight": 30,
@@ -508,38 +687,15 @@ JSON with Authorization header, where accessToken locate
     }
   },
 
-  "statistics_training": {
-    "views": 1200,
-    "favourite": 60,
-    "in_training": 15,
-    "rating": 4.94,
-    "reviews": [
-      {
-        "user_review": {
-          "id": 1,
-          "user_rating": 3.0,
-          "rating": 5,
-          "review": "not bad"
-        }
-      }
-    ]
-  },
-
-  "in_progress": {
-    "flag": false,
-    "progress": 30,
-    "weight_progress": 0.3,
-    "cycle": 0,
-    "update_available": false,
-    "want_updates": true
-  },
-
   "training_days": [
     {
       "name": "День 1: Тренировка груди и трицепса",
       "description": "Базовая тренировка для развития мышц груди и трицепса.",
       "image": "https://example.com/images/day1.jpg",
       "week_day": "wednesday",
+
+      "flag": true,
+
       "exercises": [
         {
           "name": "Жим штанги лёжа",
@@ -547,6 +703,9 @@ JSON with Authorization header, where accessToken locate
           "description": "Основное упражнение для развития грудных мышц.",
           "image": "https://example.com/images/bench_press.jpg",
           "example_exercise": "https://example.com/videos/bench_press.mp4",
+
+          "flag": true,
+
           "approaches": [
             {
               "recommended_weight": 30,
@@ -589,15 +748,22 @@ JSON with Authorization header, where accessToken locate
 ```JSON
 {
   "training_id": 1,
+  "version": 0,
+  "type": "BodyBuilding",
   "name": "top of the top",
   "description": "Программа тренировок для начинающих, направленная на развитие силы и выносливости.",
   "image": "https://example.com/images/training_program_1.jpg",
   "price": 1200,
 
-  "views": 1200,
-  "favourite": 60,
-  "in_training": 15,
-  "rating": 4.94,
+  "statistics_training": 
+  {
+      "views": 1200,
+      "favourite": 60,
+      "in_training": 15,
+      "rating": 4.94,
+      "reviews_count": 1,
+      "reviews": []
+  },
 
   "author": {
     "user_id": 9,
@@ -625,14 +791,15 @@ JSON with Authorization header, where accessToken locate
 ```
 
 ### Fields
-- training_programs: an array of General_training_information
+- training_programs: an array of [General_training_information](#general-training-information)
 
 ## achievement
 ```JSON
 {
   "id":                 1,
+  "exercise_id":        3,
   "name_exercise":      "bench press",
-  "id_exercise":        3,
+  "image":              "https://url",
   "weight":             130,
   "count":              10,
   "date":               10.02.2024 12:30:19,
@@ -678,7 +845,7 @@ JSON with Authorization header, where accessToken locate
   "calf_girth":       40.0,
   "wrist_girth":      18.0,
   "ankle_girth":      22.0,
-  "date":             "2025-02-12 16:59:18"
+  "date":             "2025-05-13T13:53:06.945266Z"
 }
 ```
 
@@ -692,19 +859,21 @@ JSON with Authorization header, where accessToken locate
 ## Anthropomery_stat
 ```JSON
 {
-  "anthropomery_stat": [
+  "anthropomery_stat": {
     {},
     {},
-  ]
+  }
 }
 ```
+
+### Fields 
+- anthropomery_stat: an array of anthropomery
 
 ## Anthropometry Filter
 ```JSON
 {
   "start_date":"2025-02-12 16:59:18",
-  "end_date": "2025-02-13 16:59:18",
-  "body_part": "neck_girth"
+  "end_date": "2025-02-13 16:59:18"
 }
 ```
 ### Fields
@@ -712,15 +881,10 @@ JSON with Authorization header, where accessToken locate
 -   end_date: date until we want to know statistic
 
 
-### Fields 
-- anthropomery_stat: an array of anthropomery
-
 ## User Filter
 ```JSON
 {
   "search_bar": "Test",
-  "number_trainings": 1,
-  "subscribers": 1
 }
 ```
 
@@ -733,15 +897,22 @@ JSON with Authorization header, where accessToken locate
 ```JSON
 {
   "search_bar": "Test",
-  "subscribers": 2,
-  "id_training_type": 3
+  "rating": 4.3,
+  "favourite_cnt": 2,
+  "id_training_type": 3,
+  "price_min": -1,
+  "price_max": 100000,
+  "views_min": 0,
+  "in_training_cnt": 0
 }
 ```
 
 ### Fields
 - search_bar: a string that user type to find training program by name
-- subscribers: how many people liked this program(int)
+- rating: float type, rating of training program
+- favourite_cnt: how many people liked this program(int)
 - id_training_type: what type of training is it(int)
+- in_training_cnt: number of people who training with this program
 
 ## Exercise filter
 ```JSON
@@ -761,48 +932,24 @@ JSON with Authorization header, where accessToken locate
 }
 ```
 
-## Statistic for exercises
-```JSON
-{
-  "statistics":
-  [
-    {
-      "weigth_done": 130.0,
-      "count_done": 20,
-      "date": "14.12.2020 02:43:12"
-    },
-    {
-      "weigth_done": 130.0,
-      "count_done": 20,
-      "date": "14.12.2020 02:43:13"
-    },
-    {
-      "weigth_done": 130.0,
-      "count_done": 20,
-      "date": "14.12.2020 02:43:14"
-    }
-  ]
-}
-```
-
 ## History_exercise
 ```JSON
 {
-  "user_id": 12,
-  "date": "14.12.2020 02:43:14",
   "name": "Жим штанги лёжа",
   "exercise_id": 1,
   "image": "https://example.com/images/bench_press.jpg",
   "process_video": "https://example.com/videos/bench_press.mp4",
-  "recommended_weight": 30,
-  "recommended_count": 10,
-  "in_progress_ex": {
-      "flag": true,
-      "done_weight": 20,
-      "done_count": 11,
-      "diff_done_rec_w": -10,
-      "diff_done_rec_c": 1
-  }
+  "approach": {
+    "recommended_weight": 30,
+    "recommended_count": 10,
+    "in_progress_ex": {
+        "flag": true,
+        "done_weight": 20,
+        "done_count": 11,
+        "diff_done_rec_w": -10,
+        "diff_done_rec_c": 1
+    }
+}
 }
 ```
 
@@ -811,9 +958,11 @@ JSON with Authorization header, where accessToken locate
 {
   "exercise_id": 1,
   "name_exercise": "Bench press",
-  "date": "14.12.2020 02:43:14",
+  "date": "2025-05-16T18:10:47.001512+03:00",
   "done_weight": 20,
   "done_count": 11,
+  "image" : "url",
+  "viceo_record": "url
 }
 ```
 
@@ -859,3 +1008,74 @@ JSON with Authorization header, where accessToken locate
 - avg_training_rating: Average user's training rating
 - reviews: Array of reviews.
   - user_review: Review object (see description above).
+
+### Exercises_info_from_libraries
+```JSON
+{
+    "exercises": [
+        {
+            "id": 1,
+            "name": "1",
+            "link_video": "3"
+        }
+    ]
+}
+```
+
+### Exercise_info_from_libraries
+```JSON
+ {
+   "id": 1,
+   "name": "1",
+   "link_video": "3"
+ }
+```
+
+### Training_history
+```JSON
+ [
+    {
+        "Training_ex": {
+            "name": "Жим штанги лежа",
+            "exercise_id": 2,
+            "description": "",
+            "image": "",
+            "example_exercise": "",
+            "approaches": [
+                {
+                    "recommended_weight": 0,
+                    "recommended_count": 0,
+                    "in_progress_ex": {
+                        "flag": false,
+                        "done_weight": 4,
+                        "done_count": 45,
+                        "diff_done_rec_w": 0,
+                        "diff_done_rec_c": 0
+                    }
+                }
+            ]
+        },
+        "date": "2025-05-04 18:56:35.940145+03"
+    }
+ ]
+```
+
+### Statistic_json_request
+```JSON
+ {
+  "user_id": 22,
+  "id_exercise": 2
+}
+```
+
+
+### Statistic_json_response
+```JSON
+{
+    "data": {
+        "2025-04-04 00:00:00": 66,
+        "2025-05-01 00:00:00": 45,
+        "2025-05-04 00:00:00": 4
+    }
+}
+```

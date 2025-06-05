@@ -11,7 +11,12 @@ export default class auth_store {
         name: '',
         surname: '',
         nickname: '',
-        avatar: ''
+        avatar: '',
+        social_media: {
+            telegram_url: " ",
+            vk_url: " ",
+            youtube_url: " "
+          }
     };
     isAuth = false;
     private errorStore: IErrorStore;
@@ -51,7 +56,7 @@ export default class auth_store {
         try {
             const response = await AuthService.registration(RegisterData);
             console.log(response);
-            this.setAuth(true);
+            // this.setAuth(true);
             this.errorStore.clearError();
         } catch (e: any) {
             this.errorStore.setError(e.response?.data?.message);

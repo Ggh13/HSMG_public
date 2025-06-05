@@ -17,7 +17,39 @@ interface ProfileInfoProps {
 
 export const ProfileInfo: FC<ProfileInfoProps> = observer(({ user }) => {
   const { profileStore } = useContext(StoreContext);
-  
+  if (user.user_id != profileStore.user.user_id) {
+    return (
+      <section className={styles.profile}>
+      <div className={styles.profile__container}>
+        <header className={styles.profile__header}>
+          <TgIcon size={30} />
+        </header>
+        <hr className={styles.line}></hr>
+        <main className={styles.profile__main}>
+          <div className={styles.profile__avatar}>
+            <Avatar
+              src={user.avatar}
+              size={80}
+            />
+          </div>
+          <div className={styles.profile__other} >
+            <div className={styles.profile__naming}>
+              <span className="m20">
+                <strong>{user.name}</strong>
+              </span>
+              <span className="m20">
+                <strong>{user.surname}</strong>
+              </span>
+              <span className={`${styles.profile__nickname} m16`}>
+                @{user.nickname}
+              </span>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+    )
+  }
   return (
     <section className={styles.profile}>
       <div className={styles.profile__container}>
@@ -32,7 +64,7 @@ export const ProfileInfo: FC<ProfileInfoProps> = observer(({ user }) => {
               size={80}
             />
           </div>
-          <div className={styles.profile__other}>
+          <div className={styles.profile__other} >
             <div className={styles.profile__naming}>
               <span className="m20">
                 <strong>{user.name}</strong>
@@ -44,11 +76,12 @@ export const ProfileInfo: FC<ProfileInfoProps> = observer(({ user }) => {
                 @{user.nickname}
               </span>
             </div>
-            {user.user_id === profileStore.user.user_id && (<div className="">
-              <NavigationButton link="/ChangeAccountData" />
-            </div>)}
+
             
           </div>
+          {user.user_id === profileStore.user.user_id && (<div className={styles.navButton}>
+              <NavigationButton link="/ChangeAccountData" />
+            </div>)}
         </main>
       </div>
     </section>

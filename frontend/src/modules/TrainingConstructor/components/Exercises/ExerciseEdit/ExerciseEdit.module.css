@@ -1,0 +1,12 @@
+.ex-edit__buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-right: 16px;
+}
+
+.approaches-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
